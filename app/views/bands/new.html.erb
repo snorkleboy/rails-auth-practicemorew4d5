@@ -1,0 +1,9 @@
+<h1>this is a create a band page</h1>
+
+<form action=" <%= bands_url %> " method="post">
+  <input type='hidden' value= "<% form_authenticity_token %>" name='authenticity_token'>
+  <label> whats your shitty band's shitty band name?</label>
+  <input type='text' value='bn' name =band[name]>
+  <input type='submit' value='register band'>
+
+</form>

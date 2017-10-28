@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MusicApp</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+  <header class= 'site-header'> the miraculously buggy music app
+
+    <% Time.now %>
+
+  <% if current_user %>
+  <form class="logout_button" action=" <%= sessions_url %> " method="post">
+
+    <input type='hidden' value= "<%  form_authenticity_token %>" name=authenticity_token>
+    <input type='hidden' value='DELETE' name='_method'>
+    <input type='submit' value='log out motherfucker'>
+  </form>
+
+  <% elsif !(params[:controller] == "sessions" && params[:action] == "new") %>
+  <form  class= 'log_in_buttons' action=" <%= sessions_url %>" method="post">
+
+  <input type="hidden" name="authenticity_token" value=" <% form_authenticity_token %> ">
+
+  <input type="text" name="user[e_mail]" value='username'>
+
+  <input type="text" name="user[password]" value='password'>
+
+  <input type="submit"  value="log yo'self in">
+  </form>
+
+</header>
+<br>
+<br>
+<br>
+
+  <% end %>
+
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

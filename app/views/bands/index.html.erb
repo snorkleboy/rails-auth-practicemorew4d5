@@ -1,0 +1,30 @@
+<h1> this is the bands index page</h1>
+<% if (flash[:errors]) %>
+<% flash[:errors].each do |error| %>
+<%= error  %>
+<% end %>
+<% end %>
+
+<% bands=Band.all %>
+<span>
+<% bands.each do |band| %>
+<%= band.name %>
+<!--  delete button-->
+ <form action="<%= band_url(band) %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete this band(!)">
+
+  <input type='hidden' value= "<% form_authenticity_token %>" name='authenticity_token'>
+
+<!-- edit button -->
+<form action="<%= edit_band_url(band) %>" method="edit">
+ <input type="hidden" name="_method" value="delete">
+ <input type="submit" value="Delete this band(!)">
+
+ <input type='hidden' value= "<% form_authenticity_token %>" name='authenticity_token'>
+
+
+</form>
+</span>
+<br>
+<% end %>

@@ -1,0 +1,24 @@
+<h1> this is the login page i hope</h1>
+
+<ul>
+  <% if (flash[:errors]) %>
+<% flash[:errors].each do |error|   %>
+  <li>
+<%= error %>
+</li>
+<% end %>
+<% end %>
+</ul>
+
+<form  action=" <%= sessions_url %>" method="post">
+
+<input type="hidden" name="authenticity_token" value=" <% form_authenticity_token %> ">
+
+<label> username</label>
+<input type="text" name="user[e_mail]" >
+
+<label> password </label>
+<input type="text" name="user[password]" >
+
+<input type="submit"  value="this is a string in a button">
+</form>
